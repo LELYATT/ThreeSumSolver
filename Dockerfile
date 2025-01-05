@@ -1,4 +1,11 @@
+# Use an official OpenJDK runtime as a parent image
 FROM openjdk:11-jre-slim
-COPY target/three-sum-1.0-SNAPSHOT.jar /app/three-sum.jar
+
+# Set the working directory in the container
 WORKDIR /app
-ENTRYPOINT ["java", "-jar", "three-sum.jar"]
+
+# Copy the JAR file from the target directory
+COPY target/problem-solution-1.0-SNAPSHOT.jar app.jar
+
+# Run the JAR file
+CMD ["java", "-jar", "app.jar"]
